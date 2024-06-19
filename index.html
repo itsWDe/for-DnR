@@ -9,15 +9,33 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            background: url('bk.jpg') no-repeat center center fixed; /* Menyertakan gambar latar belakang */
-            background-size: cover; /* Mengatur ukuran gambar agar menutupi seluruh latar belakang */
+            overflow: hidden; /* Menghindari scroll pada halaman */
+        }
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden; /* Menghindari overflow video */
+        }
+        video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         .container {
             position: relative;
             z-index: 1;
             text-align: center;
             padding: 50px;
-            color: yellow; /* Teks warna kuning agar terlihat di atas gambar */
+            color: yellow; /* Teks warna kuning agar terlihat di atas video */
         }
         .surat {
             background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan untuk teks */
@@ -38,9 +56,6 @@
             object-fit: cover;
             margin: 5px; /* Margin kecil di sekitar gambar */
         }
-        audio {
-            margin-top: 20px;
-        }
         .footer {
             margin-top: 20px;
             color: white; /* Warna teks footer putih untuk kontras */
@@ -48,6 +63,15 @@
     </style>
 </head>
 <body>
+    <!-- Video background container -->
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="bk.mp4" type="video/mp4">
+            Browser kamu tidak mendukung video.
+        </video>
+    </div>
+
+    <!-- Content container -->
     <div class="container">
         <h1>Selamat Ulang Tahun, Diska!</h1>
         <div class="surat">
@@ -67,10 +91,6 @@
             <img src="foto2.jpg" alt="Foto bersama 2">
             <img src="foto3.jpg" alt="Foto bersama 3">
         </div>
-        <audio controls autoplay>
-            <source src="lagu.mp3" type="audio/mp3">
-            Browser kamu tidak mendukung pemutar audio.
-        </audio>
         <div class="footer">
             <p>Website ini dibuat dengan cinta untuk Diska</p>
         </div>
